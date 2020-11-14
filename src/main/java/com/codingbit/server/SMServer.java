@@ -16,7 +16,6 @@ public class SMServer {
 
     private static final Logger log = LoggerFactory.getLogger(SMServer.class);
 
-    private Integer port;
     private final Server server;
 
     public SMServer(Module[] guiceModules) {
@@ -29,18 +28,16 @@ public class SMServer {
 
         // add the connector
         ServerConnector connector = new ServerConnector(newServer);
-        connector.setPort(port != null ? port : 8080);
+        connector.setPort(8080);
         newServer.addConnector(connector);
 
         // configure servlet
-        ServletContextHandler servletContextHandler = new ServletContextHandler(newServer, "/",
-                ServletContextHandler.NO_SESSIONS);
-
-        servletContextHandler.setContextPath("/");
-        servletContextHandler.addServlet(DefaultServlet.class, "/");
+        ServletContextHandler servlet = new ServletContextHandler(newServer, "/", ServletContextHandler.NO_SESSIONS);
+        servlet.setContextPath("/");
+        servlet.addServlet(DefaultServlet.class, "/");
 
         // configure guice
-        servletContextHandler.addEventListener(new GuiceServletContextListener() {
+        servlet.addEventListener(new GuiceServletContextListener() {
             @Override
             protected Injector getInjector() {
                 try {
