@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // server
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.34.v20201102'
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.4.34.v20201102'
+
+    // database / pub sub
+    compile group: 'org.redisson', name: 'redisson', version: '3.13.6'
+
+    // dependency injection
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
+
+    // reactor
+    compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.11.RELEASE'
+    testCompile group: 'io.projectreactor', name: 'reactor-test', version: '3.3.11.RELEASE'
+
+    // unit tests
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.7.0'
+    testCompile 'org.mockito:mockito-core:2.24.0'
+
+    // logs
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+}
