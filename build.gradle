@@ -13,13 +13,14 @@ dependencies {
 
     // server
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.34.v20201102'
-    compile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.4.34.v20201102'
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.34.v20201102'
 
     // database / pub sub
     compile group: 'org.redisson', name: 'redisson', version: '3.13.6'
 
     // dependency injection
     compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    compile group: 'com.google.inject.extensions', name: 'guice-servlet', version: '4.2.3'
 
     // reactor
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.11.RELEASE'
