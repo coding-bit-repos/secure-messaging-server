@@ -1,0 +1,10 @@
+version: '2.4'
+
+services:
+  redis_db:
+    image: redis:4.0.10
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_PASSWORD=redis
+    command: sh -c "redis-server --requirepass $${REDIS_PASSWORD}"
